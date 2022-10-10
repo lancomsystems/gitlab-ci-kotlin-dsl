@@ -60,26 +60,47 @@ enum class WhenUploadType(
 }
 
 @Serializable
+class CoverageReport {
+    @SerialName("coverage_format")
+    var coverageFormat: String? = null
+    var path: String? = null
+}
+
+@Serializable
 class ArtifactsReportsDsl : DslBase() {
     var junit: MutableSet<String>? = null
     var dotenv: MutableSet<String>? = null
     var codequality: MutableSet<String>? = null
     var sast: MutableSet<String>? = null
+
     @SerialName("dependency_scanning")
     var dependencyScanning: MutableSet<String>? = null
+
     @SerialName("container_scanning")
     var containerScanning: MutableSet<String>? = null
     var dast: MutableSet<String>? = null
+
     @SerialName("license_management")
     var licenseManagement: MutableSet<String>? = null
+
     @SerialName("license_scanning")
     var licenseScanning: MutableSet<String>? = null
     var performance: MutableSet<String>? = null
     var metrics: MutableSet<String>? = null
     var cobertura: MutableSet<String>? = null
+
     @SerialName("load_performance")
     var loadPerformance: MutableSet<String>? = null
     var terraform: MutableSet<String>? = null
+
+    @SerialName("coverage_report")
+    var coverageReport: CoverageReport? = null
+
+    fun coverageReport(coverageFormat: String?, path: String?) = CoverageReport().also { coverageReport ->
+        coverageReport.coverageFormat = coverageFormat
+        coverageReport.path = path
+        this.coverageReport = coverageReport
+    }
 
     fun junit(vararg elements: String) = junit(elements.toList())
     fun junit(elements: Iterable<String>) = ensureJunit().addAll(elements)
