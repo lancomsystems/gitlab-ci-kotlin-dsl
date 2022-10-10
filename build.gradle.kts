@@ -3,21 +3,21 @@ repositories {
 }
 
 plugins {
-    kotlin("jvm") version "1.5.31"
-    kotlin("plugin.serialization") version "1.5.31"
+    kotlin("jvm") version "1.7.20"
+    kotlin("plugin.serialization") version "1.7.20"
     `maven-publish`
     signing
-    id("org.jetbrains.dokka") version "1.5.31"
+    id("org.jetbrains.dokka") version "1.7.10"
 }
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
-    implementation("com.charleskorn.kaml:kaml:0.37.0")
+    implementation("com.charleskorn.kaml:kaml:0.49.0")
 
-    api("org.jetbrains.kotlinx:kotlinx-datetime:0.3.1")
+    api("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
 
-    testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
-    testImplementation("org.assertj:assertj-core:3.22.0")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.9.1")
+    testImplementation("org.assertj:assertj-core:3.23.1")
 }
 
 tasks {
