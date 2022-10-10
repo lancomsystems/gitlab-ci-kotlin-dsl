@@ -25,6 +25,9 @@ class GitlabCiDsl : DslBase() {
     private var include: IncludeDsl? = null
 
     fun job(name: String, block: JobDsl.() -> Unit) = addAndReturn(jobs, JobDsl(name)).apply(block)
+
+    fun addExistingJob(job: JobDsl) = addAndReturn(jobs, job)
+
     operator fun JobDsl.unaryPlus() = this@GitlabCiDsl.jobs.add(this)
 
     fun stages(block: StagesDsl.() -> Unit) = ensureStages().apply(block)
